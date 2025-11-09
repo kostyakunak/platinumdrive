@@ -121,6 +121,8 @@ export default function Fleet() {
     e.stopPropagation();
     setSelectedCar(car);
     setIsModalOpen(true);
+    // Scroll to top when modal opens
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const closeModal = () => {
@@ -255,11 +257,12 @@ export default function Fleet() {
       {/* Modal */}
       {isModalOpen && selectedCar && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in overflow-y-auto"
           onClick={closeModal}
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
         >
           <div
-            className="relative bg-black border border-amber-400/30 max-w-2xl w-full p-8 md:p-12 animate-scale-in"
+            className="relative bg-black border border-amber-400/30 max-w-2xl w-full p-8 md:p-12 animate-scale-in my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
