@@ -1,4 +1,4 @@
-# 🚗 Platinum Drive
+# Platinum Drive
 
 Luxury car rental website for Milan, Italy
 
