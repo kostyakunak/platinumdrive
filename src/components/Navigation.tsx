@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { smoothScrollTo } from '../utils/smoothScroll';
@@ -14,8 +15,6 @@ export default function Navigation({ scrollY }: NavigationProps) {
 
   const openModal = () => {
     setIsModalOpen(true);
-    // Scroll to top when modal opens
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const closeModal = () => {
@@ -120,11 +119,10 @@ export default function Navigation({ scrollY }: NavigationProps) {
       </div>
 
       {/* Modal */}
-      {isModalOpen && (
+      {isModalOpen && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in overflow-y-auto"
+          className="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in overflow-y-auto"
           onClick={closeModal}
-          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
         >
           <div
             className="relative bg-black border border-amber-400/30 max-w-2xl w-full p-8 md:p-12 animate-scale-in my-auto"
@@ -138,12 +136,9 @@ export default function Navigation({ scrollY }: NavigationProps) {
             </button>
 
             <div className="mb-8">
-              <h3 className="text-3xl md:text-4xl font-extralight tracking-wider mb-2">
-                PLATINUM DRIVE
-              </h3>
-              <p className="text-sm tracking-[0.2em] text-gray-400 mb-6">
+              <h3 className="text-3xl md:text-4xl font-extralight tracking-wider mb-6 text-white">
                 Luxury Car Rental in Milan
-              </p>
+              </h3>
               <div className="h-px w-24 bg-amber-400/50"></div>
             </div>
 
@@ -187,11 +182,12 @@ export default function Navigation({ scrollY }: NavigationProps) {
 
             <div className="pt-6 border-t border-gray-800">
               <div className="flex items-center justify-center">
-                <span className="text-lg font-light tracking-widest text-amber-400">PD</span>
+                <span className="text-lg font-light tracking-widest text-amber-400">PLATINUM DRIVE</span>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </nav>
   );
