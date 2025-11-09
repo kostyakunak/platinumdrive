@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes draw-border {
+  0% {
+    stroke-dashoffset: 800;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-border-infinite {
+  0% {
+    stroke-dashoffset: 1200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gradient-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gradient-pulse {
+  0% {
+    background-position: -200% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.animate-draw-border {
+  animation: draw-border 2s ease-in-out forwards;
+}
+
+.animate-draw-border-infinite {
+  animation: draw-border-infinite 3.3s linear infinite;
+}
+
+.group:hover .animate-draw-border-infinite {
+  animation-play-state: paused;
+}
+
+.animate-gradient-sweep {
+  animation: gradient-sweep 3s ease-in-out infinite;
+}
+
+.animate-gradient-pulse {
+  background-size: 200% 100%;
+  animation: gradient-pulse 4s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
