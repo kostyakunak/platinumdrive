@@ -1,4 +1,4 @@
-# Platinum Drive
+# 🚗 Platinum Drive
 
 Luxury car rental website for Milan, Italy
 
@@ -30,7 +30,7 @@ Extensive attention to detail in creating a luxurious, premium feel:
 - **Gradient pulse animations** on interactive elements
 - **Smooth scroll** with custom easing functions
 - **Fade-in animations** for all sections on scroll
-- **Modal window** with smooth scale-in animation
+- **Modal windows** with smooth scale-in animation and React Portal for proper positioning
 - **Arrow indicator** that fades out as user scrolls through content
 - **Hover effects** on car cards with image zoom and overlay transitions
 
@@ -45,13 +45,21 @@ Extensive attention to detail in creating a luxurious, premium feel:
 
 ## Technologies Used
 
-- **React 18** - Component-based architecture
+- **React 18** - Component-based architecture with React Portal for modals
 - **TypeScript** - Type-safe development
 - **Vite** - Fast build tool and dev server
 - **Tailwind CSS** - Utility-first styling
 - **Lucide React** - Modern icon library
 - **Netlify** - Hosting and deployment
 - **Git/GitHub** - Version control
+
+## Recent Updates
+
+### Modal Improvements
+- **Fixed positioning bug**: Implemented React Portal to ensure modals display correctly when opened from any scroll position
+- **Consistent styling**: Updated modal titles to match design system (e.g., "Luxury Car Rental in Milan" uses same styling as car names)
+- **Branding update**: Replaced "PD" with "PLATINUM DRIVE" in all modal footers for consistent branding
+- **Improved spacing**: Enhanced modal layout with proper margins and padding
 
 ## Project Structure
 
@@ -86,7 +94,8 @@ Extensive attention to detail in creating a luxurious, premium feel:
 - **Button Border Animation**: Continuous circular animation on "SELECT A CAR" button border
 - **Gradient Pulse**: Subtle gradient animation on button background
 - **Section Fade-ins**: All sections fade in smoothly when scrolled into view
-- **Modal Animations**: Scale and fade animations for reservation modal
+- **Modal Animations**: Scale and fade animations for reservation and contact modals
+- **Modal Positioning**: React Portal implementation ensures modals display correctly regardless of scroll position
 - **Scroll Arrow**: Down arrow fades out as user reaches second section
 
 ### Responsive Design
@@ -101,7 +110,11 @@ Extensive attention to detail in creating a luxurious, premium feel:
 
 - **Smooth Scrolling**: Custom implementation with 1.5s duration and easing
 - **Interactive Cards**: Hover effects reveal reservation button
-- **Modal System**: Click any car's "RESERVE" button to see contact information
+- **Modal System**: 
+  - Click any car's "RESERVE" button to see contact information with car details
+  - Click "BOOK NOW" in navigation to open contact modal
+  - All modals use React Portal for correct positioning regardless of scroll position
+  - Consistent styling across all modals with "PLATINUM DRIVE" branding
 - **Language Switching**: Seamless language change without page reload
 - **Category Filtering**: Instant filtering of car fleet by type
 
@@ -164,6 +177,7 @@ This project demonstrates:
 - Category filtering (All, Sedan, SUV, Sport)
 - Hover effects with image zoom
 - Reservation modal with car details and contact info
+- Modal footer with "PLATINUM DRIVE" branding
 - Local image optimization
 
 ### Contact Section
@@ -175,7 +189,10 @@ This project demonstrates:
 - Fixed header with scroll detection
 - Language switcher (EN/IT)
 - Smooth scroll to sections
-- "BOOK NOW" button
+- "BOOK NOW" button with contact modal
+- Contact modal with "Luxury Car Rental in Milan" title
+- Modal footer with "PLATINUM DRIVE" branding
+- React Portal for proper modal positioning
 
 ## Environment
 
