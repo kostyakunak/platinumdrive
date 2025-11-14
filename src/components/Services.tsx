@@ -61,23 +61,23 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative py-32 px-6 bg-gradient-to-b from-black via-gray-900 to-black"
+      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-black via-gray-900 to-black"
     >
       <div className="max-w-7xl mx-auto">
         <div
-          className={`text-center mb-20 transition-all duration-[1500ms] ease-out ${
+          className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-[1500ms] ease-out ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
           }`}
         >
-          <h3 className="text-6xl md:text-8xl font-extralight tracking-[0.2em] mb-6">
+          <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extralight tracking-[0.1em] sm:tracking-[0.2em] mb-4 sm:mb-6">
             {t('services.title')}
           </h3>
-          <p className="text-gray-400 text-lg tracking-wider">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg tracking-wider px-4">
             {t('services.subtitle')}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -90,15 +90,15 @@ export default function Services() {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="border border-gray-800 p-8 h-full hover:border-amber-400 transition-colors duration-500 relative overflow-hidden">
+                <div className="border border-gray-800 p-6 sm:p-8 h-full hover:border-amber-400 transition-colors duration-500 relative overflow-hidden">
                   <div className="absolute inset-0 bg-amber-400/5 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-700"></div>
 
                   <div className="relative z-10">
-                    <Icon className="w-12 h-12 mb-6 text-amber-400 transition-transform duration-500 group-hover:scale-110" />
-                    <h4 className="text-xl font-light tracking-wider mb-3 text-white transition-colors duration-500">
+                    <Icon className="w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-6 text-amber-400 transition-transform duration-500 group-hover:scale-110" />
+                    <h4 className="text-lg sm:text-xl font-light tracking-wider mb-2 sm:mb-3 text-white transition-colors duration-500">
                       {service.title}
                     </h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
                       {service.description}
                     </p>
                   </div>

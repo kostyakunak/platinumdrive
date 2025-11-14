@@ -26,7 +26,7 @@ export default function Concept() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 px-6 bg-black"
+      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-black"
     >
       <div className="max-w-4xl mx-auto text-center">
         <div
@@ -36,18 +36,18 @@ export default function Concept() {
               : 'translate-y-20 opacity-0'
           }`}
         >
-          <div className="inline-block px-6 py-2 border border-amber-400/30 text-xs tracking-[0.3em] text-amber-400 mb-8">
+          <div className="inline-block px-4 sm:px-6 py-2 border border-amber-400/30 text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] text-amber-400 mb-6 sm:mb-8">
             {t('concept.label')}
           </div>
-          <h3 className="text-4xl md:text-6xl font-extralight tracking-wide leading-tight mb-8">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extralight tracking-wide leading-tight mb-6 sm:mb-8 px-4">
             {t('concept.title')}
             <br />
             {t('concept.highlight') && <span className="text-amber-400 italic">{t('concept.highlight')}</span>}
           </h3>
-          <p className="text-gray-400 text-lg leading-relaxed font-light max-w-2xl mx-auto mb-6">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed font-light max-w-2xl mx-auto mb-4 sm:mb-6 px-4">
             {t('concept.desc1')}
           </p>
-          <p className="text-gray-500 text-base leading-relaxed font-light max-w-2xl mx-auto">
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed font-light max-w-2xl mx-auto px-4">
             {t('concept.desc2')}
           </p>
         </div>

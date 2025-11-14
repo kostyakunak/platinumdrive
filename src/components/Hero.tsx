@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
       </div>
 
-      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-6">
+      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6">
         <div
           className={`transition-all duration-[2000ms] delay-500 ease-out ${
             loaded
@@ -45,15 +45,15 @@ export default function Hero() {
               : 'translate-y-12 opacity-0'
           }`}
         >
-          <div className="flex items-center justify-center mb-8">
-            <div className="w-16 h-16 border-2 border-amber-400 flex items-center justify-center">
-              <span className="text-2xl font-light tracking-widest text-amber-400">PD</span>
+          <div className="flex items-center justify-center mb-4 sm:mb-8">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 border-2 border-amber-400 flex items-center justify-center">
+              <span className="text-lg sm:text-2xl font-light tracking-widest text-amber-400">PD</span>
             </div>
           </div>
-          <h2 className="text-7xl md:text-9xl font-extralight tracking-[0.2em] mb-4">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-extralight tracking-[0.1em] sm:tracking-[0.2em] mb-3 sm:mb-4 leading-tight">
             PLATINUM DRIVE
           </h2>
-          <div className="h-px w-24 bg-amber-400 mx-auto mb-4 opacity-60"></div>
+          <div className="h-px w-16 sm:w-24 bg-amber-400 mx-auto mb-3 sm:mb-4 opacity-60"></div>
         </div>
 
         <div
@@ -63,7 +63,7 @@ export default function Hero() {
               : 'translate-y-12 opacity-0'
           }`}
         >
-          <p className="text-sm tracking-[0.25em] text-gray-400 mb-12">
+          <p className="text-xs sm:text-sm tracking-[0.25em] text-gray-400 mb-8 sm:mb-12">
             MILANO
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function Hero() {
           }`}
         >
           <button 
-            className="group relative px-12 py-4 overflow-hidden border border-amber-400/40 bg-black/20"
+            className="group relative px-8 sm:px-12 py-3 sm:py-4 overflow-hidden border border-amber-400/40 bg-black/20"
             onClick={() => smoothScrollTo('fleet', 80)}
           >
             {/* Continuous gradient animation on background */}
@@ -118,14 +118,14 @@ export default function Hero() {
             <span className="absolute inset-0 bg-white transition-transform duration-500 -translate-x-full group-hover:translate-x-0"></span>
             
             {/* Text */}
-            <span className="relative text-white group-hover:text-black transition-colors duration-500 tracking-[0.2em] text-sm font-light z-10">
+            <span className="relative text-white group-hover:text-black transition-colors duration-500 tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-light z-10">
               {t('hero.select')}
             </span>
           </button>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-20"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-32 bg-gradient-to-t from-black to-transparent z-20"></div>
     </section>
   );
 }

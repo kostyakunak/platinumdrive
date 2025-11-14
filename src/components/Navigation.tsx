@@ -12,6 +12,7 @@ export default function Navigation({ scrollY }: NavigationProps) {
   const isScrolled = scrollY > 50;
   const { language, setLanguage, t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -21,8 +22,16 @@ export default function Navigation({ scrollY }: NavigationProps) {
     setIsModalOpen(false);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   useEffect(() => {
-    if (isModalOpen) {
+    if (isModalOpen || isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -30,23 +39,23 @@ export default function Navigation({ scrollY }: NavigationProps) {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isModalOpen]);
+  }, [isModalOpen, isMobileMenuOpen]);
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-700 ${
         isScrolled
-          ? 'bg-black/90 backdrop-blur-md py-4 shadow-2xl'
-          : 'bg-transparent py-6'
+          ? 'bg-black/90 backdrop-blur-md py-3 sm:py-4 shadow-2xl'
+          : 'bg-transparent py-4 sm:py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center space-x-12">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 border border-amber-400 flex items-center justify-center">
-              <span className="text-xs font-light tracking-widest text-amber-400">PD</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        <div className="flex items-center space-x-4 sm:space-x-12">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 border border-amber-400 flex items-center justify-center">
+              <span className="text-[10px] sm:text-xs font-light tracking-widest text-amber-400">PD</span>
             </div>
-            <h1 className="text-xl font-light tracking-[0.3em] hover:tracking-[0.4em] transition-all duration-500">
+            <h1 className="text-sm sm:text-xl font-light tracking-[0.2em] sm:tracking-[0.3em] hover:tracking-[0.3em] sm:hover:tracking-[0.4em] transition-all duration-500">
               PLATINUM DRIVE
             </h1>
           </div>
@@ -83,7 +92,7 @@ export default function Navigation({ scrollY }: NavigationProps) {
             </button>
           </div>
         </div>
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center space-x-3 sm:space-x-6">
           <div className="hidden md:flex space-x-3">
             <button
               onClick={() => setLanguage('en')}
@@ -106,8 +115,16 @@ export default function Navigation({ scrollY }: NavigationProps) {
               IT
             </button>
           </div>
-          <button className="md:hidden">
-            <Menu className="w-6 h-6" />
+          <button 
+            onClick={toggleMobileMenu}
+            className="md:hidden text-white"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
           <button 
             onClick={openModal}
@@ -118,6 +135,84 @@ export default function Navigation({ scrollY }: NavigationProps) {
         </div>
       </div>
 
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 top-[60px] sm:top-[73px] bg-black/95 backdrop-blur-md z-40 animate-fade-in overflow-y-auto"
+          onClick={closeMobileMenu}
+        >
+          <div className="px-6 py-8 space-y-6" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo('services', 80);
+                closeMobileMenu();
+              }}
+              className="block w-full text-left text-lg tracking-wider text-white hover:text-amber-400 transition-colors duration-300 py-3 border-b border-gray-800"
+            >
+              {t('nav.services')}
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo('fleet', 80);
+                closeMobileMenu();
+              }}
+              className="block w-full text-left text-lg tracking-wider text-white hover:text-amber-400 transition-colors duration-300 py-3 border-b border-gray-800"
+            >
+              {t('nav.fleet')}
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo('contact', 80);
+                closeMobileMenu();
+              }}
+              className="block w-full text-left text-lg tracking-wider text-white hover:text-amber-400 transition-colors duration-300 py-3 border-b border-gray-800"
+            >
+              {t('nav.contact')}
+            </button>
+            <div className="flex items-center justify-center space-x-4 pt-6">
+              <button
+                onClick={() => {
+                  setLanguage('en');
+                  closeMobileMenu();
+                }}
+                className={`px-4 py-2 text-sm tracking-widest transition-all duration-300 ${
+                  language === 'en'
+                    ? 'text-amber-400 border-b border-amber-400'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => {
+                  setLanguage('it');
+                  closeMobileMenu();
+                }}
+                className={`px-4 py-2 text-sm tracking-widest transition-all duration-300 ${
+                  language === 'it'
+                    ? 'text-amber-400 border-b border-amber-400'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                IT
+              </button>
+            </div>
+            <button
+              onClick={() => {
+                openModal();
+                closeMobileMenu();
+              }}
+              className="w-full mt-6 px-8 py-3 border border-amber-400 hover:bg-amber-400 hover:text-black transition-all duration-500 text-sm tracking-widest text-amber-400"
+            >
+              {t('nav.book')}
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Modal */}
       {isModalOpen && createPortal(
         <div
@@ -125,21 +220,21 @@ export default function Navigation({ scrollY }: NavigationProps) {
           onClick={closeModal}
         >
           <div
-            className="relative bg-black border border-amber-400/30 max-w-2xl w-full p-8 md:p-12 animate-scale-in my-auto"
+            className="relative bg-black border border-amber-400/30 max-w-2xl w-full p-6 sm:p-8 md:p-12 animate-scale-in my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-300"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-white transition-colors duration-300"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
-            <div className="mb-8">
-              <h3 className="text-3xl md:text-4xl font-extralight tracking-wider mb-6 text-white">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extralight tracking-wider mb-4 sm:mb-6 text-white">
                 Luxury Car Rental in Milan
               </h3>
-              <div className="h-px w-24 bg-amber-400/50"></div>
+              <div className="h-px w-16 sm:w-24 bg-amber-400/50"></div>
             </div>
 
             <div className="space-y-6 mb-8">

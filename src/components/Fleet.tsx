@@ -143,25 +143,25 @@ export default function Fleet() {
     <section
       ref={sectionRef}
       id="fleet"
-      className="relative py-32 px-6 bg-black"
+      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-black"
     >
       <div className="max-w-7xl mx-auto">
         <div
-          className={`text-center mb-12 transition-all duration-[1500ms] ease-out ${
+          className={`text-center mb-8 sm:mb-12 transition-all duration-[1500ms] ease-out ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
           }`}
         >
-          <h3 className="text-6xl md:text-8xl font-extralight tracking-[0.2em] mb-6">
+          <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extralight tracking-[0.1em] sm:tracking-[0.2em] mb-4 sm:mb-6">
             {t('fleet.title')}
           </h3>
-          <p className="text-gray-400 text-lg tracking-wider mb-12">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg tracking-wider mb-8 sm:mb-12 px-4">
             {t('fleet.subtitle')}
           </p>
 
-          <div className="flex justify-center items-center space-x-1 mb-16">
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-1 mb-12 sm:mb-16 px-2">
             <button
               onClick={() => setActiveCategory('all')}
-              className={`px-8 py-3 text-sm tracking-widest transition-all duration-500 ${
+              className={`px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-xs sm:text-sm tracking-widest transition-all duration-500 ${
                 activeCategory === 'all'
                   ? 'bg-white text-black'
                   : 'bg-transparent text-white border border-gray-700 hover:border-white'
@@ -169,10 +169,10 @@ export default function Fleet() {
             >
               {t('fleet.all')}
             </button>
-            <span className="text-gray-600 mx-2">·</span>
+            <span className="text-gray-600 mx-1 sm:mx-2 hidden sm:inline">·</span>
             <button
               onClick={() => setActiveCategory('sedan')}
-              className={`px-8 py-3 text-sm tracking-widest transition-all duration-500 ${
+              className={`px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-xs sm:text-sm tracking-widest transition-all duration-500 ${
                 activeCategory === 'sedan'
                   ? 'bg-white text-black'
                   : 'bg-transparent text-white border border-gray-700 hover:border-white'
@@ -180,10 +180,10 @@ export default function Fleet() {
             >
               {t('fleet.sedan')}
             </button>
-            <span className="text-gray-600 mx-2">·</span>
+            <span className="text-gray-600 mx-1 sm:mx-2 hidden sm:inline">·</span>
             <button
               onClick={() => setActiveCategory('suv')}
-              className={`px-8 py-3 text-sm tracking-widest transition-all duration-500 ${
+              className={`px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-xs sm:text-sm tracking-widest transition-all duration-500 ${
                 activeCategory === 'suv'
                   ? 'bg-white text-black'
                   : 'bg-transparent text-white border border-gray-700 hover:border-white'
@@ -191,10 +191,10 @@ export default function Fleet() {
             >
               {t('fleet.suv')}
             </button>
-            <span className="text-gray-600 mx-2">·</span>
+            <span className="text-gray-600 mx-1 sm:mx-2 hidden sm:inline">·</span>
             <button
               onClick={() => setActiveCategory('sport')}
-              className={`px-8 py-3 text-sm tracking-widest transition-all duration-500 ${
+              className={`px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-xs sm:text-sm tracking-widest transition-all duration-500 ${
                 activeCategory === 'sport'
                   ? 'bg-white text-black'
                   : 'bg-transparent text-white border border-gray-700 hover:border-white'
@@ -205,7 +205,7 @@ export default function Fleet() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {filteredCars.map((car, index) => (
             <div
               key={car.id}
@@ -214,7 +214,7 @@ export default function Fleet() {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="relative h-[400px] overflow-hidden bg-gray-900">
+              <div className="relative h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden bg-gray-900">
                 <img
                   src={car.image}
                   alt={car.name}
@@ -224,22 +224,22 @@ export default function Fleet() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
 
-                <div className="absolute inset-0 flex flex-col justify-end p-6 text-left">
+                <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 text-left">
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-xs tracking-[0.3em] text-gray-300 mb-2">
+                    <p className="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] text-gray-300 mb-1 sm:mb-2">
                       {car.specs}
                     </p>
-                    <h4 className="text-2xl font-light tracking-wider mb-2">
+                    <h4 className="text-lg sm:text-xl md:text-2xl font-light tracking-wider mb-1 sm:mb-2">
                       {car.name}
                     </h4>
-                    <div className="flex items-center justify-between">
-                      <span className="text-amber-400 text-xl font-light">{car.price}<span className="text-sm text-gray-400">{t('fleet.perday')}</span></span>
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="text-amber-400 text-base sm:text-lg md:text-xl font-light">{car.price}<span className="text-xs sm:text-sm text-gray-400">{t('fleet.perday')}</span></span>
                       <button
                         onClick={(e) => handleReserve(car, e)}
-                        className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer hover:opacity-80"
+                        className="flex items-center space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 cursor-pointer hover:opacity-80"
                       >
-                        <span className="text-sm tracking-wider">{t('fleet.reserve')}</span>
-                        <ArrowRight className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-500" />
+                        <span className="text-xs sm:text-sm tracking-wider">{t('fleet.reserve')}</span>
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-2 transition-transform duration-500" />
                       </button>
                     </div>
                   </div>
@@ -259,27 +259,27 @@ export default function Fleet() {
           onClick={closeModal}
         >
           <div
-            className="relative bg-black border border-amber-400/30 max-w-2xl w-full p-8 md:p-12 animate-scale-in"
+            className="relative bg-black border border-amber-400/30 max-w-2xl w-full p-6 sm:p-8 md:p-12 animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-300"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-white transition-colors duration-300"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
-            <div className="mb-8">
-              <h3 className="text-3xl md:text-4xl font-extralight tracking-wider mb-2">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extralight tracking-wider mb-2">
                 {selectedCar.name}
               </h3>
-              <p className="text-amber-400 text-xl font-light mb-4">
-                {selectedCar.price} <span className="text-sm text-gray-400">{t('fleet.perday')}</span>
+              <p className="text-amber-400 text-lg sm:text-xl font-light mb-3 sm:mb-4">
+                {selectedCar.price} <span className="text-xs sm:text-sm text-gray-400">{t('fleet.perday')}</span>
               </p>
-              <p className="text-sm tracking-[0.2em] text-gray-400 mb-6">
+              <p className="text-xs sm:text-sm tracking-[0.2em] text-gray-400 mb-4 sm:mb-6">
                 {selectedCar.specs}
               </p>
-              <div className="h-px w-24 bg-amber-400/50"></div>
+              <div className="h-px w-16 sm:w-24 bg-amber-400/50"></div>
             </div>
 
             <div className="space-y-6 mb-8">

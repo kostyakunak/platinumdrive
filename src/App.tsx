@@ -64,10 +64,10 @@ function App() {
       <Contact />
 
       <div 
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-10 transition-opacity duration-500"
+        className="fixed bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-10 transition-opacity duration-500"
         style={{ opacity: arrowOpacity }}
       >
-        <ChevronDown className="w-8 h-8" />
+        <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" />
       </div>
     </div>
   );
